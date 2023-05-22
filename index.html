@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="app.css">
+    <title>Vue in HTML</title>
+</head>
+<body>
+    <div id="root" class="flex flex-col gap-2 items-center text-lg font-bold my-4">
+        <div v-if="showQuote">
+            <span class="text-red-400 bg-red-200 p-2 rounded-md">Luke I am your father!</span>
+        </div>
+        <span>Name: {{name}}</span>
+        <span>Order: {{order}}</span>
+        <span>Awesomeness: {{awesomeness}}</span>
+        <button v-on:click="awesomeness++" class="bg-green-400 rounded-md p-2 text-white">Awesomeness +1</button>
+        <button v-on:click="awesomeness--" class="bg-red-400 rounded-md py-2 px-3 text-white">Awesomeness -1</button>
+        <button @click="changeOrder" class="bg-orange-400 rounded-md py-2 px-6 text-white">Change Order</button>
+        <button @click="toggleShowQuote" class="bg-blue-400 rounded-md py-2 px-8 text-white">
+            <span v-if="showQuote">Hide Quote</span>
+            <span v-if="!showQuote">Show Quote</span>
+        </button>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
