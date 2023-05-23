@@ -17,6 +17,9 @@ const app = Vue.createApp( {
         },
         toggleShowQuote () {
             this.showQuote = !this.showQuote
+        },
+        handleEvent (e) {
+            console.log(e)
         }
     }
 });
