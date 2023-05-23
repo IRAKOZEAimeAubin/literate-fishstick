@@ -24,6 +24,12 @@
             <span v-if="showQuote">Hide Quote</span>
             <span v-if="!showQuote">Show Quote</span>
         </button>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="w-[400px] py-24 text-center bg-amber-200 inline-block m-5 rounded-md" @mouseover="handleEvent">Mouse Over</div>
+            <div class="w-[400px] py-24 text-center bg-emerald-200 inline-block m-5 rounded-md" @mouseleave="handleEvent">Mouse Leave</div>
+            <div class="w-[400px] py-24 text-center bg-fuchsia-200 inline-block m-5 rounded-md" @doubleclick="handleEvent">Double Click</div>
+            <div class="w-[400px] py-24 text-center bg-cyan-200 inline-block m-5 rounded-md" @mouseleave>Hello</div>
+        </div>
     </div>
     <script src="./app.js"></script>
 </body>
