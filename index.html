@@ -12,23 +12,29 @@
 <body>
     <div id="root" class="flex flex-col gap-2 items-center text-lg font-bold my-4">
         <div v-if="showQuote">
-            <span class="text-red-400 bg-red-200 p-2 rounded-md">Luke I am your father!</span>
+            <span class="text-red-400 bg-red-200 p-2 rounded-md">Luke, I am your father!</span>
         </div>
-        <span>Name: {{name}}</span>
-        <span>Order: {{order}}</span>
+        <a :href="url" class="text-sky-400">Check this out!</a>
+        <ul class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <li v-for="character in onlyJedis" class="flex flex-col text-center even:text-lime-400 odd:text-rose-400 items-center">
+                <img :src="character.picture" :alt="character.name" class="w-48 h-48 rounded-full">
+                <span>{{character.name}}</span>
+                <span>{{character.order}}</span>
+            </li>
+        </ul>
         <span>Awesomeness: {{awesomeness}}</span>
         <button v-on:click="awesomeness++" class="bg-green-400 rounded-md p-2 text-white">Awesomeness +1</button>
         <button v-on:click="awesomeness--" class="bg-red-400 rounded-md py-2 px-3 text-white">Awesomeness -1</button>
-        <button @click="changeOrder" class="bg-orange-400 rounded-md py-2 px-6 text-white">Change Order</button>
+        <button @click="changeOrderAndName" class="bg-orange-400 rounded-md py-2 px-12 text-white">Change</button>
         <button @click="toggleShowQuote" class="bg-blue-400 rounded-md py-2 px-8 text-white">
             <span v-if="showQuote">Hide Quote</span>
             <span v-if="!showQuote">Show Quote</span>
         </button>
-        <div class="grid grid-cols-2 gap-4">
-            <div class="w-[400px] py-24 text-center bg-amber-200 inline-block m-5 rounded-md" @mouseover="handleEvent">Mouse Over</div>
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <div class="w-[400px] py-24 text-center bg-amber-200 inline-block m-5 rounded-md" @mouseover="handleEvent($event, 4)">Mouse Over</div>
             <div class="w-[400px] py-24 text-center bg-emerald-200 inline-block m-5 rounded-md" @mouseleave="handleEvent">Mouse Leave</div>
             <div class="w-[400px] py-24 text-center bg-fuchsia-200 inline-block m-5 rounded-md" @doubleclick="handleEvent">Double Click</div>
-            <div class="w-[400px] py-24 text-center bg-cyan-200 inline-block m-5 rounded-md" @mouseleave>Hello</div>
+            <div class="w-[400px] py-24 text-center bg-cyan-200 inline-block m-5 rounded-md" @mousemove="handleMouseMove">I am at {{x}},{{y}}</div>
         </div>
     </div>
     <script src="./app.js"></script>
